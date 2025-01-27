@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:versionCode="1"
+    android:versionName="1.0"
+    android:installLocation="auto" >
+
+    <supports-screens
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <!-- Permissions for Storage -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" android:targetSdkVersion="30" />
+
+    <application
+        android:label="@string/godot_project_name_string"
+        android:allowBackup="false"
+        android:isGame="true"
+        android:hasFragileUserData="false"
+        android:requestLegacyExternalStorage="true" <!-- For Android 10 -->
+        tools:ignore="GoogleAppIndexingWarning"
+        android:icon="@mipmap/icon">
+
+        <meta-data
+            android:name="org.godotengine.editor.version"
+            android:value="${godotEditorVersion}" />
+
+        <meta-data
+            android:name="xr_mode_metadata_name"
+            android:value="xr_mode_metadata_value" />
+
+        <meta-data
+            android:name="xr_hand_tracking_metadata_name"
+            android:value="xr_hand_tracking_metadata_value"/>
+
+        <meta-data
+            android:name="xr_hand_tracking_version_name"
+            android:value="xr_hand_tracking_version_value"/>
+
+        <meta-data
+            android:name="com.oculus.supportedDevices"
+            android:value="all" />
+
+        <activity
+            android:name=".GodotApp"
+            android:label="@string/godot_project_name_string"
+            android:theme="@style/GodotAppSplashTheme"
+            android:launchMode="singleInstancePerTask"
+            android:excludeFromRecents="false"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|density|keyboard|navigation|screenLayout|uiMode"
+            android:resizeableActivity="false"
+            tools:ignore="UnusedAttribute" >
+
+            <meta-data android:name="com.oculus.vr.focusaware" android:value="true" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="com.oculus.intent.category.VR" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
