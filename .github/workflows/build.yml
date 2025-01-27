@@ -67,7 +67,8 @@ jobs:
           scons platform=android target=release tools=yes
 
       - name: Upload Build Artifacts (APK)
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
+  
         with:
           name: godot-android-apk
           path: android/godot_source_code/bin/godot.apk
