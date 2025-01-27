@@ -36,6 +36,8 @@ jobs:
 
           # Create the correct directory structure
           mkdir -p android-sdk/cmdline-tools/latest
+          
+          # Move the contents from 'cmdline-tools' to 'latest'
           mv android-sdk/cmdline-tools/* android-sdk/cmdline-tools/latest/
 
       - name: Install Android SDK and NDK
@@ -65,8 +67,7 @@ jobs:
           scons platform=android target=release tools=yes
 
       - name: Upload Build Artifacts (APK)
-        uses: actions/upload-artifact@v3
-        
+        uses: actions/upload-artifact@v2
         with:
           name: godot-android-apk
           path: android/godot_source_code/bin/godot.apk
